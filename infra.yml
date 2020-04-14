@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+  mongo:
+    image: mongo:${MONGO_VERSION}
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      dev-network:
+        aliases:
+          - mongo.dev
+    volumes:
+      - "mongo_data:/data/db"
+
+volumes:
+  mongo_data:
+
+networks:
+  dev-network:
